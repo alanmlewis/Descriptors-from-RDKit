@@ -62,11 +62,13 @@
 
 0. **BalabanJ**: Balaban's J value for a molecule, Chem. Phys. Lett. 89:399-404 (1982).
  
-0. **BertzCT**: A topological index meant to quantify ""complexity"" of molecules. J. Am. Chem. Soc. 103:3599-601 (1981).
+0. **BertzCT**: A topological index meant to quantify "complexity" of molecules. J. Am. Chem. Soc. 103:3599-601 (1981).
+
+     The following Chi, HallKierAlpha and Kappa descriptors are taken from [The Molecular Connectivity Chi Indexes and Kappa Shape Indexes in Structure-Property Modeling](https://onlinelibrary.wiley.com/doi/epdf/10.1002/9780470125793.ch9).
  
 0. **Chi0**: From equations (1),(9) and (10) of Rev. Comp. Chem. vol 2, 367-422, (1991)
  
-0. **Chi0n**: Similar to Hall Kier Chi0v, but uses nVal instead of valence This makes a big difference after we get out of the first row.Rev. Comput. Chem. 2:367-422 (1991).
+0. **Chi0n**: Similar to Hall Kier Chi0v, but uses nVal instead of valence This makes a big difference after the first row.Rev. Comput. Chem. 2:367-422 (1991).
  
 0. **Chi0v**: From equations (5),(9) and (10) of Rev. Comp. Chem. vol 2, 367-422, (1991)
  
@@ -81,7 +83,7 @@
  
 0. **Chi2v**: From equations (5),(15) and (16) of Rev. Comp. Chem. vol 2, 367-422, (1991)
  
-0. **Chi3n**: Similar to Hall Kier Chi3v, but uses nVal instead of valence This makes a big difference after we get out of the first row.Rev. Comput. Chem. 2:367-422 (1991).
+0. **Chi3n**: Similar to Hall Kier Chi3v, but uses nVal instead of valence. This makes a big difference after we get out of the first row.Rev. Comput. Chem. 2:367-422 (1991).
  
 0. **Chi3v**: From equations (5),(15) and (16) of Rev. Comp. Chem. vol 2, 367-422, (1991)
  
@@ -91,22 +93,23 @@
  
 0. **HallKierAlpha**: The Hall-Kier alpha value for a molecule. Rev. Comput. Chem. 2:367-422 (1991).
  
-0. **Ipc**: the information content of the coefficients of the characteristic polynomial of 
-the adjacency matrix of a hydrogen-suppressed graph of a molecule.
+0. **Ipc**: the information content of the coefficients of the characteristic polynomial of the adjacency matrix of a hydrogen-suppressed graph of a molecule.
+
+      The following 3 descriptors are calculated incorrectly, per [this discussion](https://github.com/rdkit/rdkit/discussions/6884).
  
-0. **Kappa1**: Kappa indices are calculated relative to the least branched (linear) and most
-branched (star) compounds with the same number of atoms as the molecule being
-investigated.
+0. **Kappa1**: Kappa indices are calculated relative to the least branched (linear) and most branched (star) compounds with the same number of atoms as the molecule being investigated.
  
 0. **Kappa2**: Hall-Kier Kappa2 value
  
 0. **Kappa3**: Hall-Kier Kappa3 value
+
+     The following VSA descriptors are all taken from [Journal of Molecular Graphics and Modelling 18, 464-477, 2000](https://www.sciencedirect.com/science/article/pii/S1093326300000681). The VSA descriptors are explained in detail on this [RDKit blog post](https://greglandrum.github.io/rdkit-blog/posts/2023-04-17-what-are-the-vsa-descriptors.html).
  
-0. **LabuteASA**: Labute's Approximate Surface Area (ASA from MOE)	
+0. **LabuteASA**: Labute's Approximate Surface Area (ASA from MOE) 
  
 0. **PEOE_VSA1**: 	MOE(Molecular Operating Environment) Charge VSA Descriptor 1 (-inf < x < -0.30) 
  
-0. **PEOE_VSA10**: 	MOE Charge VSA Descriptor 
+0. **PEOE_VSA10**: 	MOE Charge VSA Descriptor ( 0.10 <= x < 0.15)
  
 0. **PEOE_VSA11**: 	MOE Charge VSA Descriptor 11 ( 0.15 <= x < 0.20)
 
@@ -134,7 +137,7 @@ investigated.
  
 0. **SMR_VSA1**: MOE MR VSA Descriptor 1 (-inf < x < 1.29)
   
-0. **SMR_VSA10**: MOE MR VSA Descriptor 10
+0. **SMR_VSA10**: MOE MR VSA Descriptor 10 
  
 0. **SMR_VSA2**: MOE MR VSA Descriptor 2 ( 1.29 <= x < 1.82)
  
@@ -176,7 +179,9 @@ investigated.
  
 0. **SlogP_VSA9**: MOE logP VSA Descriptor 9 ( 0.30 <= x < 0.40)
  
-0. **TPSA**: The polar surface area (PSA) or topological polar surface area (TPSA) of a molecule is defined as the surface sum over all polar atoms or molecules, primarily oxygen and nitrogen, also including their attached hydrogen atoms. PSA is a commonly used medicinal chemistry metric for the optimization of a drug's ability to permeate cells. 
+0. **TPSA**: The polar surface area (PSA) or topological polar surface area (TPSA) of a molecule is defined as the surface sum over all polar atoms or molecules, primarily oxygen and nitrogen, also including their attached hydrogen atoms. PSA is a commonly used medicinal chemistry metric for the optimization of a drug's ability to permeate cells. [Curr Med Chem. 2009 ; 16(1): 21–41, link to Author's version](https://pmc.ncbi.nlm.nih.gov/articles/PMC7549127/pdf/nihms-916384.pdf).
+
+   The EState descriptors are first introduced in [J. Chem. Inf. Comput. Sci. 1991, 31, 76-82](https://pubs.acs.org/doi/pdf/10.1021/ci00001a012); the descriptors below are also described in this [RDKit blog post](https://greglandrum.github.io/rdkit-blog/posts/2023-04-17-what-are-the-vsa-descriptors.html).
    
 0. **EState_VSA1**: EState VSA  Descriptor 1 (-inf < x < -0.39)
  
