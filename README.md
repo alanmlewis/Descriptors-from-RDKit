@@ -1,16 +1,18 @@
 
-**A brief description of chemical descriptors in RDKit**
+## **A brief description of chemical descriptors in RDKit**
 
-==============================================================
+These are listed in the order in which the descriptors appear in the list `Descriptors._descList`.
 
+---
+   The first 4 descriptors are the maximum and minimum EState (electrotopological state) indices, which aim to capture the electronic character and the topological environment of each skeletal atom in a molecule. These are taken from [J. Chem. Inf. Comput. Sci. 1991, 31, 76-82](https://pubs.acs.org/doi/pdf/10.1021/ci00001a012).
 
-0. **MaxEStateIndex**: Returns a tuple of EState indices for the molecule, Reference: Hall, Mohney and Kier. JCICS _31_ 76-81 (1991)
+0. **MaxAbsEStateIndex**: Returns the maximum absolute EState index for the molecule
  
-0. **MinEStateIndex**: Returns a tuple of EState indices for the molecule, Reference: Hall, Mohney and Kier. JCICS _31_ 76-81 (1991)
+0. **MaxEStateIndex**: Returns the maximum EState index for the molecule
  
-0. **MaxAbsEStateIndex**: Returns a tuple of EState indices for the molecule, Reference: Hall, Mohney and Kier. JCICS _31_ 76-81 (1991)
+0. **MinAbsEStateIndex**: Returns the minimum absolute EState index for the molecule
  
-0. **MinAbsEStateIndex**: 	Returns a tuple of EState indices for the molecule, Reference: Hall, Mohney and Kier. JCICS _31_ 76-81 (1991)
+0. **MinEStateIndex**: 	Returns the minimum EState index for the molecule
  
 0. **QED**: QED stands for quantitative amount of similarity of drugs and the concept was first introduced by Richard Bickerton and colleagues. The empirical logic of the QED measure reflects the underlying distribution of molecular properties, including molecular weight, logP, topological polar surface area, number of hydrogen scavenger donors and acceptors, number of aromatic rings and rotating screens and the presence of unwanted chemicals.
 
@@ -22,25 +24,25 @@
  
 0. **ExactMolWt**: The exact molecular weight of the molecule
  
-0. **NumValenceElectrons**: The number of valence electrons the molecule has
+0. **NumValenceElectrons**: The number of valence electrons of the molecule
  
-0. **NumRadicalElectrons**:The number of radical electrons the molecule has (says nothing about spin state)
+0. **NumRadicalElectrons**: The number of radical electrons in the molecule (says nothing about spin state)
  
-0. **MaxPartialCharge**: A partial charge is a non-integer charge value when measured in elementary charge units. Partial charge is more commonly called net atomic charge. It is represented by the Greek lowercase letter δ, namely δ− or δ+.
+0. **MaxPartialCharge**: The maximum partial charge on any atom in the molecule. A partial charge is a non-integer charge value when measured in elementary charge units. Partial charge is more commonly called net atomic charge. It is represented by the Greek lowercase letter δ, namely δ− or δ+.
  
-0. **MinPartialCharge**: Min partial Charge
+0. **MinPartialCharge**: The minimum partial charge on any atom in the molecule.
  
-0. **MaxAbsPartialCharge**:Returns molecular charge descriptors
+0. **MaxAbsPartialCharge**: The maximum absolute partial charge on any atom in the molecule.
  
-0. **MinAbsPartialCharge**:Returns molecular charge descriptors
+0. **MinAbsPartialCharge**: The minimum absolute partial charge on any atom in the molecule.
  
-0. **FpDensityMorgan1**: Morgan fingerprint density
+0. **FpDensityMorgan1**: Morgan fingerprint density (the count of on-bits in the fingerprint divided by the heavy atom count in the molecule), constructed using a Morgan fingerprint of radius 1.
  
-0. **FpDensityMorgan2**: Morgan fingerprint density
+0. **FpDensityMorgan2**: Morgan fingerprint density (the count of on-bits in the fingerprint divided by the heavy atom count in the molecule), constructed using a Morgan fingerprint of radius 2.
  
-0. **FpDensityMorgan3**:	Morgan fingerprint density
+0. **FpDensityMorgan3**:	Morgan fingerprint density (the count of on-bits in the fingerprint divided by the heavy atom count in the molecule), constructed using a Morgan fingerprint of radius 3.
 
-     [**BCUT Descriptors**](https://pubs.acs.org/doi/full/10.1021/ci980137x) below are calculated as the maximum and minimum eigenvalues (HI and LOW) of Burden connectivity matrices (https://pubs.acs.org/doi/pdf/10.1021/ci00063a011, https://doi.org/10.1002/qsar.19970160406) weighted by atomic weights (MW), Gastgeiger charges (CHG), Crippen Log P (LOGP), and Crippen MR along the diagonal elements of the Burden matrices.
+     [**BCUT Descriptors**](https://pubs.acs.org/doi/full/10.1021/ci980137x) below are calculated as the maximum and minimum eigenvalues (HI and LOW) of Burden connectivity matrices ([J. Chem. Inf. Comput. Sci. 1989, 29, 225-227 ](https://pubs.acs.org/doi/pdf/10.1021/ci00063a011), [Quant. Stmct-Act. Relat. 16, 3O9-314 (1997)](https://doi.org/10.1002/qsar.19970160406)) weighted by atomic weights (MW), Gastgeiger charges (CHG), Crippen Log P (LOGP), and Crippen MR along the diagonal elements of the Burden matrices.
 
 0. **BCUT2D_MWHI**
 
@@ -58,52 +60,51 @@
 
 0. **BCUT2D_MRLOW**
 
-0. **AvgIpc**: This returns the average information content of the coefficients of the characteristic polynomial of the adjacency matrix of a hydrogen-suppressed graph of a molecule. Reference: Eq 7 of D. Bonchev & N. Trinajstic, J. Chem. Phys. vol 67, 4517-4533 (1977).
+0. **AvgIpc**: This returns the average information content of the coefficients of the characteristic polynomial of the adjacency matrix of a hydrogen-suppressed graph of a molecule. Eq 7 of [D. Bonchev & N. Trinajstic, J. Chem. Phys. vol 67, 4517-4533 (1977)](https://doi.org/10.1063/1.434593).
 
-0. **BalabanJ**: Balaban's J value for a molecule, Chem. Phys. Lett. 89:399-404 (1982).
+0. **BalabanJ**: Balaban's J value for a molecule. This is the averaged distance sum connectivity, constructed by the distance matrix of the molecule. [Chem. Phys. Lett. 89:399-404 (1982)](https://doi.org/10.1016/0009-2614(82)80009-2).
  
-0. **BertzCT**: A topological index meant to quantify "complexity" of molecules. J. Am. Chem. Soc. 103:3599-601 (1981).
+0. **BertzCT**: A topological index meant to quantify "complexity" of molecules. [J. Am. Chem. Soc. 103:3599-601 (1981)](https://pubs.acs.org/doi/10.1021/ja00402a071).
 
-     The following Chi, HallKierAlpha and Kappa descriptors are taken from [The Molecular Connectivity Chi Indexes and Kappa Shape Indexes in Structure-Property Modeling](https://onlinelibrary.wiley.com/doi/epdf/10.1002/9780470125793.ch9).
+     The following Chi, HallKierAlpha and Kappa descriptors are taken from [The Molecular Connectivity Chi Indexes and Kappa Shape Indexes in Structure-Property Modeling](https://onlinelibrary.wiley.com/doi/epdf/10.1002/9780470125793.ch9). A chi index is a weighted count of a given type of subgraph. The order of a chi index is the number of graph edges in the corresponding subgraph. Chi0 is related to the sum of the number of nearest neighbours of each atom in the molecule; Chi1 is related to the number of bonds; Chi2 the number of paths of bonds of length 2, and so on. Chi and Chi-v are distinguished by the latter encoding the atomic identities of using their valence, rather than just the presence of atoms as in the former. Chi-n is identical to Chi-v for first row elements; for the second row and below the encoding of valence is done differently.
  
-0. **Chi0**: From equations (1),(9) and (10) of Rev. Comp. Chem. vol 2, 367-422, (1991)
+0. **Chi0**: From equations (1), (9) and (10).
  
-0. **Chi0n**: Similar to Hall Kier Chi0v, but uses nVal instead of valence This makes a big difference after the first row.Rev. Comput. Chem. 2:367-422 (1991).
+0. **Chi0n**
  
-0. **Chi0v**: From equations (5),(9) and (10) of Rev. Comp. Chem. vol 2, 367-422, (1991)
+0. **Chi0v**: From equations (5), (9) and (10).
  
-0. **Chi1**: From equations (1),(11) and (12) of Rev. Comp. Chem. vol 2, 367-422, (1991)
+0. **Chi1**: From equations (1), (11) and (12).
  
-0. **Chi1n**: Similar to Hall Kier Chi1v, but uses nVal instead of valence.Rev. Comput. Chem. 2:367-422 (1991).
+0. **Chi1n** 
  
-0. **Chi1v**: From equations (5),(11) and (12) of Rev. Comp. Chem. vol 2, 367-422, (1991)
+0. **Chi1v**: From equations (5), (11) and (12).
  
-0. **Chi2n**: Similar to Hall Kier Chi2v, but uses nVal instead of valence This makes a big difference after we get
- out of the first row.Rev. Comput. Chem. 2:367-422 (1991).	
+0. **Chi2n**
  
-0. **Chi2v**: From equations (5),(15) and (16) of Rev. Comp. Chem. vol 2, 367-422, (1991)
+0. **Chi2v**: From equations (5), (15) and (16).
  
-0. **Chi3n**: Similar to Hall Kier Chi3v, but uses nVal instead of valence. This makes a big difference after we get out of the first row.Rev. Comput. Chem. 2:367-422 (1991).
+0. **Chi3n**
+   
+0. **Chi3v**: From equations (5), (15) and (16).
+    
+0. **Chi4n**
+   
+0. **Chi4v**: From equations (5), (15) and (16).
  
-0. **Chi3v**: From equations (5),(15) and (16) of Rev. Comp. Chem. vol 2, 367-422, (1991)
+0. **HallKierAlpha**: The Hall-Kier alpha value for a molecule. For an individual atom ${\textrm{X}}$, $\alpha = r_{\textrm{X}} / r_{\textrm{C}} - 1$, the ratio of the covalent radius of the atom that of a $\textrm{C}_{\textrm{sp}^3}$ atom. For a molecule, it is the sum of these parameters. From equation (58).
  
-0. **Chi4n**: Similar to Hall Kier Chi4v, but uses nVal instead of valence.This makes a big difference after we get out of the first row.Rev. Comput. Chem. 2:367-422 (1991).
- 
-0. **Chi4v**: From equations (5),(15) and (16) of Rev. Comp. Chem. vol 2, 367-422, (1991)
- 
-0. **HallKierAlpha**: The Hall-Kier alpha value for a molecule. Rev. Comput. Chem. 2:367-422 (1991).
- 
-0. **Ipc**: the information content of the coefficients of the characteristic polynomial of the adjacency matrix of a hydrogen-suppressed graph of a molecule.
+0. **Ipc**: the information content of the coefficients of the characteristic polynomial of the adjacency matrix of a hydrogen-suppressed graph of a molecule. Eq 6 of [D. Bonchev & N. Trinajstic, J. Chem. Phys. vol 67, 4517-4533 (1977)](https://doi.org/10.1063/1.434593).
 
-      The following 3 descriptors are calculated incorrectly, per [this discussion](https://github.com/rdkit/rdkit/discussions/6884).
+      The following 3 descriptors are calculated incorrectly, following an error in the original paper, per [this discussion](https://github.com/rdkit/rdkit/discussions/6884).
  
-0. **Kappa1**: Kappa indices are calculated relative to the least branched (linear) and most branched (star) compounds with the same number of atoms as the molecule being investigated.
+0. **Kappa1**: The first order shape attribute depends the number of bonds in the molecule, compared to the maximum and minumum number of bonds a molecules of that size could contain. The greater the number of bonds, the smaller the value of Kappa1, for a given number of atoms in the molecule. From equations (49) and (50).
  
-0. **Kappa2**: Hall-Kier Kappa2 value
+0. **Kappa2**: The second order shape attribute depends the number of two-bonds paths in the molecule, compared to the maximum and minumum number of such paths a molecules of that size could contain. The greater the number of paths, the smaller the value of Kappa2, for a given number of atoms in the molecule. From equations (51) and (52).
  
-0. **Kappa3**: Hall-Kier Kappa3 value
+0. **Kappa3**: The third order shape attribute depends the number of three-bonds paths in the molecule, compared to the maximum and minumum number of such paths a molecules of that size could contain. The greater the number of paths, the smaller the value of Kappa3, for a given number of atoms in the molecule. From equations (53), (54) and (55).
 
-     The following VSA descriptors are all taken from [Journal of Molecular Graphics and Modelling 18, 464-477, 2000](https://www.sciencedirect.com/science/article/pii/S1093326300000681). The VSA descriptors are explained in detail on this [RDKit blog post](https://greglandrum.github.io/rdkit-blog/posts/2023-04-17-what-are-the-vsa-descriptors.html).
+     The following VSA descriptors are all adapted from [Journal of Molecular Graphics and Modelling 18, 464-477, 2000](https://www.sciencedirect.com/science/article/pii/S1093326300000681). Additional bins have been added to those originally proposed by Labute, in order to distinguish between a wider array of descriptors; in addition the original paper uses log(MR), while the RDKit implementation uses MR. The VSA descriptors are explained in detail on this [RDKit blog post](https://greglandrum.github.io/rdkit-blog/posts/2023-04-17-what-are-the-vsa-descriptors.html).
  
 0. **LabuteASA**: Labute's Approximate Surface Area (ASA from MOE) 
  
@@ -137,7 +138,7 @@
  
 0. **SMR_VSA1**: MOE MR VSA Descriptor 1 (-inf < x < 1.29)
   
-0. **SMR_VSA10**: MOE MR VSA Descriptor 10 
+0. **SMR_VSA10**: MOE MR VSA Descriptor 10 ( 4.00 <= x < inf)
  
 0. **SMR_VSA2**: MOE MR VSA Descriptor 2 ( 1.29 <= x < 1.82)
  
