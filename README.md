@@ -98,13 +98,13 @@ These are listed in the order in which the descriptors appear in the list `Descr
 
       The following 3 descriptors are calculated incorrectly, following an error in the original paper, per [this discussion](https://github.com/rdkit/rdkit/discussions/6884).
  
-0. **Kappa1**: The first order shape attribute depends the number of bonds in the molecule, compared to the maximum and minumum number of bonds a molecules of that size could contain. The greater the number of bonds, the smaller the value of Kappa1, for a given number of atoms in the molecule. From equations (49) and (50).
+0. **Kappa1**: The first order shape attribute depends the number of bonds in the molecule, compared to the maximum and minumum number of bonds a molecules of that size could contain. The greater the number of bonds, the smaller the value of Kappa1, for a given number of atoms in the molecule. From equations (48), (58) and (59).
  
-0. **Kappa2**: The second order shape attribute depends the number of two-bonds paths in the molecule, compared to the maximum and minumum number of such paths a molecules of that size could contain. The greater the number of paths, the smaller the value of Kappa2, for a given number of atoms in the molecule. From equations (51) and (52).
+0. **Kappa2**: The second order shape attribute depends the number of two-bonds paths in the molecule, compared to the maximum and minumum number of such paths a molecules of that size could contain. The greater the number of paths, the smaller the value of Kappa2, for a given number of atoms in the molecule. This is adjusted by the HallKierAlpha to encode information about different heteroatoms in the structure. From equations (48), (58) and (60).
  
-0. **Kappa3**: The third order shape attribute depends the number of three-bonds paths in the molecule, compared to the maximum and minumum number of such paths a molecules of that size could contain. The greater the number of paths, the smaller the value of Kappa3, for a given number of atoms in the molecule. From equations (53), (54) and (55).
+0. **Kappa3**: The third order shape attribute depends the number of three-bonds paths in the molecule, compared to the maximum and minumum number of such paths a molecules of that size could contain. The greater the number of paths, the smaller the value of Kappa3, for a given number of atoms in the molecule. From equations (48), (58), (61) and (62).
 
-     The following VSA descriptors are all adapted from [Journal of Molecular Graphics and Modelling 18, 464-477, 2000](https://www.sciencedirect.com/science/article/pii/S1093326300000681). Additional bins have been added to those originally proposed by Labute, in order to distinguish between a wider array of descriptors; in addition the original paper uses log(MR), while the RDKit implementation uses MR. The VSA descriptors are explained in detail on this [RDKit blog post](https://greglandrum.github.io/rdkit-blog/posts/2023-04-17-what-are-the-vsa-descriptors.html).
+     The following VSA descriptors are all adapted from [Journal of Molecular Graphics and Modelling 18, 464-477, 2000](https://www.sciencedirect.com/science/article/pii/S1093326300000681). They are constructed by calculating the contribution of each atom in the molecule to a molecular property (either LogP, MR, or the partial charge) along with the contribution of each atom to an approximate molecular surface area measure (VSA). The VSA contribution of an atom then added to a bin based on the corresponding value of the property; the final descriptors are the sum of the VSA contributions for each atom in a bin. Additional bins have been added to those originally proposed by Labute, in order to distinguish between a wider array of descriptors; in addition the original paper uses log(MR), while the RDKit implementation uses MR. The VSA descriptors are explained in detail on this [RDKit blog post](https://greglandrum.github.io/rdkit-blog/posts/2023-04-17-what-are-the-vsa-descriptors.html).
  
 0. **LabuteASA**: Labute's Approximate Surface Area (ASA from MOE) 
  
@@ -182,7 +182,7 @@ These are listed in the order in which the descriptors appear in the list `Descr
  
 0. **TPSA**: The polar surface area (PSA) or topological polar surface area (TPSA) of a molecule is defined as the surface sum over all polar atoms or molecules, primarily oxygen and nitrogen, also including their attached hydrogen atoms. PSA is a commonly used medicinal chemistry metric for the optimization of a drug's ability to permeate cells. [Curr Med Chem. 2009 ; 16(1): 21–41, link to Author's version](https://pmc.ncbi.nlm.nih.gov/articles/PMC7549127/pdf/nihms-916384.pdf).
 
-   The EState descriptors are first introduced in [J. Chem. Inf. Comput. Sci. 1991, 31, 76-82](https://pubs.acs.org/doi/pdf/10.1021/ci00001a012); the descriptors below are also described in this [RDKit blog post](https://greglandrum.github.io/rdkit-blog/posts/2023-04-17-what-are-the-vsa-descriptors.html).
+   The EState descriptors are first introduced in [J. Chem. Inf. Comput. Sci. 1991, 31, 76-82](https://pubs.acs.org/doi/pdf/10.1021/ci00001a012) (see descriptors 0-3). The descriptors EState_VSAX are equivalent to the Y_VSAX descriptors above; VSA_EStateX vectors are effectively the reverse: each atom's EState index are assigned to bins using the corresponding value of the VSA, and the descriptor is the sum of the indicies. The descriptors below are also described in this [RDKit blog post](https://greglandrum.github.io/rdkit-blog/posts/2023-04-17-what-are-the-vsa-descriptors.html).
    
 0. **EState_VSA1**: EState VSA  Descriptor 1 (-inf < x < -0.39)
  
@@ -272,7 +272,7 @@ These are listed in the order in which the descriptors appear in the list `Descr
 
 0. **NumUnspecifiedAtomStereoCenters**: Returns the number of unspecified atomic stereocenters
 
-0. **Phi**: *Unspecified in RDKIT documentation!*
+0. **Phi**: *Unspecified in RDKIT documentation!* Phi is a measure of the flexibility of the molecule. For normal alkanes, it equals the count of the number of bonds in the carbon skeleton. With homologation, the value increases, and with increased branching or cyclicity, the value decreases. Phi is calculated as Eq. 66 in [The Molecular Connectivity Chi Indexes and Kappa Shape Indexes in Structure-Property Modeling](https://onlinelibrary.wiley.com/doi/epdf/10.1002/9780470125793.ch9), and is defined as Kappa1 multiplied by Kappa2 divided by the number of atoms in the molecule. 
  
 0. **RingCount**: Number of All Rings
  
